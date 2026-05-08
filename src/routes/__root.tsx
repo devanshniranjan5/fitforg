@@ -77,14 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "FitForge — Personal AI Fitness" },
+      { name: "description", content: "Personalized fat loss, calisthenics, and height growth plans tailored to you." },
+      { name: "author", content: "FitForge" },
+      { property: "og:title", content: "FitForge — Personal AI Fitness" },
+      { property: "og:description", content: "Your personalized fitness command center." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
