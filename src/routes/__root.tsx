@@ -117,7 +117,24 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <FitnessProvider>
+        <SidebarProvider>
+          <div className="flex min-h-screen w-full bg-background">
+            <AppSidebar />
+            <div className="flex flex-1 flex-col">
+              <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border bg-background/80 px-4 backdrop-blur">
+                <SidebarTrigger />
+                <span className="font-display text-xl tracking-widest text-primary">FITFORGE</span>
+              </header>
+              <main className="flex-1">
+                <Outlet />
+              </main>
+            </div>
+          </div>
+          <OnboardingDialog />
+          <Toaster />
+        </SidebarProvider>
+      </FitnessProvider>
     </QueryClientProvider>
   );
 }
