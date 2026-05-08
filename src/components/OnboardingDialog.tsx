@@ -37,7 +37,7 @@ export function OnboardingDialog() {
 
   return (
     <Dialog open={open}>
-      <DialogContent className="max-w-lg border-border bg-card" hideClose>
+      <DialogContent className="max-w-lg border-border bg-card [&>button]:hidden">
         <DialogHeader>
           <div className="mb-2 flex items-center gap-2">
             <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary text-primary-foreground">
