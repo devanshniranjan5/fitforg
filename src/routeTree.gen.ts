@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorkoutRouteImport } from './routes/workout'
+import { Route as ProgressRouteImport } from './routes/progress'
+import { Route as HeightRouteImport } from './routes/height'
+import { Route as DietRouteImport } from './routes/diet'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WorkoutRoute = WorkoutRouteImport.update({
+  id: '/workout',
+  path: '/workout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressRoute = ProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeightRoute = HeightRouteImport.update({
+  id: '/height',
+  path: '/height',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DietRoute = DietRouteImport.update({
+  id: '/diet',
+  path: '/diet',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,72 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/diet': typeof DietRoute
+  '/height': typeof HeightRoute
+  '/progress': typeof ProgressRoute
+  '/workout': typeof WorkoutRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/diet': typeof DietRoute
+  '/height': typeof HeightRoute
+  '/progress': typeof ProgressRoute
+  '/workout': typeof WorkoutRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/diet': typeof DietRoute
+  '/height': typeof HeightRoute
+  '/progress': typeof ProgressRoute
+  '/workout': typeof WorkoutRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/diet' | '/height' | '/progress' | '/workout'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/diet' | '/height' | '/progress' | '/workout'
+  id: '__root__' | '/' | '/diet' | '/height' | '/progress' | '/workout'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DietRoute: typeof DietRoute
+  HeightRoute: typeof HeightRoute
+  ProgressRoute: typeof ProgressRoute
+  WorkoutRoute: typeof WorkoutRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/workout': {
+      id: '/workout'
+      path: '/workout'
+      fullPath: '/workout'
+      preLoaderRoute: typeof WorkoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progress': {
+      id: '/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof ProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/height': {
+      id: '/height'
+      path: '/height'
+      fullPath: '/height'
+      preLoaderRoute: typeof HeightRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diet': {
+      id: '/diet'
+      path: '/diet'
+      fullPath: '/diet'
+      preLoaderRoute: typeof DietRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +121,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DietRoute: DietRoute,
+  HeightRoute: HeightRoute,
+  ProgressRoute: ProgressRoute,
+  WorkoutRoute: WorkoutRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
