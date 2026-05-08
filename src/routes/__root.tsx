@@ -81,9 +81,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Personalized fat loss, calisthenics, and height growth plans tailored to you." },
       { name: "author", content: "FitForge" },
       { property: "og:title", content: "FitForge — Personal AI Fitness" },
-      { property: "og:description", content: "Your personalized fitness command center." },
+      { property: "og:description", content: "Personalized fat loss, calisthenics, and height growth plans tailored to you." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "FitForge — Personal AI Fitness" },
+      { name: "twitter:description", content: "Personalized fat loss, calisthenics, and height growth plans tailored to you." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/YJYv5kYn6gP3BX5w5JvIGdMUAgi1/social-images/social-1778249074494-1000068254.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/YJYv5kYn6gP3BX5w5JvIGdMUAgi1/social-images/social-1778249074494-1000068254.webp" },
     ],
     links: [
       {
